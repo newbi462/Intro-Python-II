@@ -40,17 +40,39 @@ room['treasure'].s_to = room['narrow']
 
 # Make a new player object that is currently in the 'outside' room.
 from player import Player
-
 player1 = Player("player1", "outside")
 
-print(player1)
+print(player1.location)
 # Write a loop that:
+
+x = True
+while x == True:
 #
 # * Prints the current room name
+    print(f"your location is {player1.location}")
 # * Prints the current description (the textwrap module might be useful here).
+    room_in = room.get(player1.location)
+    print(room_in.description)
 # * Waits for user input and decides what to do.
+    print("Where would you like to go?")
+    direction = input("[1] North [2] South [3] East [4] West [5] quit\n")
 #
 # If the user enters a cardinal direction, attempt to move to the room there.
+    print(direction)
+    try:
+        if int(direction) == 1:
+            room_in = room[player1.location].n_to
+        if int(direction) == 2:
+            room_in = room[player1.location].s_to
+#    if int(direction) == 1:
+#        room_in = room[player1.location].n_to
+#        player1.location = room_in.name
+#        print(player1.location)
 # Print an error message if the movement isn't allowed.
+    except AttributeError:
+        print("that is not a vaalid direction")
+    player1.location = room_in.name
+    print(player1.location)
 #
 # If the user enters "q", quit the game.
+    x = False
