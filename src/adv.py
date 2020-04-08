@@ -40,18 +40,20 @@ room['treasure'].s_to = room['narrow']
 
 # Make a new player object that is currently in the 'outside' room.
 from player import Player
-player1 = Player("player1", "outside")
+player1 = Player("player1", room['outside'])
 
-print(player1.location)
+# print(room['outside'].n_to[0])
+# print(player1.location)
 # Write a loop that:
 
 x = True
 while x == True:
 #
 # * Prints the current room name
-    print(f"your location is {player1.location}")
+    print(f"your location is {player1.location.name}")
 # * Prints the current description (the textwrap module might be useful here).
-    room_in = room.get(player1.location)
+#    room_in = room.get(player1.location)
+    room_in = player1.location
     print(room_in.description)
 # * Waits for user input and decides what to do.
     print("Where would you like to go?")
@@ -60,19 +62,31 @@ while x == True:
 # If the user enters a cardinal direction, attempt to move to the room there.
     print(direction)
     try:
-        if int(direction) == 1:
-            room_in = room[player1.location].n_to
-        if int(direction) == 2:
-            room_in = room[player1.location].s_to
+        try:
+            if int(direction) == 1:
+                room_in = player1.location.n_to
+            if int(direction) == 2:
+                room_in = player1.location.s_to
+            if int(direction) == 5:
+                x = False
+        except ValueError:
+            print("Please pick a valid choice [1 to 5]")
 #    if int(direction) == 1:
 #        room_in = room[player1.location].n_to
 #        player1.location = room_in.name
 #        print(player1.location)
 # Print an error message if the movement isn't allowed.
     except AttributeError:
-        print("that is not a vaalid direction")
-    player1.location = room_in.name
+        if int(direction) == 1:
+            print("North is not a vaalid direction")
+        if int(direction) == 2:
+            print("South is not a vaalid direction")
+        if int(direction) == 3:
+            print("East is not a vaalid direction")
+        if int(direction) == 4:
+            print("West is not a vaalid direction")
+    player1.location = room_in # needs to be the KEY not "name"
     print(player1.location)
 #
 # If the user enters "q", quit the game.
-    x = False
+    # x = False
