@@ -46,8 +46,8 @@ player1 = Player("player1", room['outside'])
 # print(player1.location)
 # Write a loop that:
 
-x = True
-while x == True:
+play_game = True
+while play_game == True:
 #
 # * Prints the current room name
     print(f"your location is {player1.location.name}")
@@ -57,25 +57,53 @@ while x == True:
     print(room_in.description)
 # * Waits for user input and decides what to do.
     print("Where would you like to go?")
-    direction = input("[1] North [2] South [3] East [4] West [5] quit\n")
+    direction = input("[n] North [s] South [e] East [w] West [q] quit\n")
+
+#Valid commands are n, s, e and w which move the player North, South, East or West
+    # print(direction)
+    if direction == "n" or direction == "s" or direction == "e" or direction == "w" direction == "q":
+        if direction == "n":
+            room_in = player1.location.n_to
+        if direction == "s":
+            room_in = player1.location.s_to
+        if direction == "e":
+            room_in = player1.location.e_to
+        if direction == "w":
+            room_in = player1.location.w_to
+        if direction == "q":
+            play_game = False
+    else:
+        print("Per MVP only n, s, e and w are valid commands, NO OTHER SOLUTIONS ARE VALID")
+
+    player1.location = room_in
+    print()
+
+
 #
 # If the user enters a cardinal direction, attempt to move to the room there.
-    print(direction)
+#    print(direction)
+"""
     try:
         try:
             if int(direction) == 1:
                 room_in = player1.location.n_to
             if int(direction) == 2:
                 room_in = player1.location.s_to
+            if int(direction) == 3:
+                room_in = player1.location.e_to
+            if int(direction) == 4:
+                room_in = player1.location.w_to
             if int(direction) == 5:
-                x = False
+                play_game = False
         except ValueError:
             print("Please pick a valid choice [1 to 5]")
+"""
 #    if int(direction) == 1:
 #        room_in = room[player1.location].n_to
 #        player1.location = room_in.name
 #        print(player1.location)
 # Print an error message if the movement isn't allowed.
+"""
     except AttributeError:
         if int(direction) == 1:
             print("North is not a vaalid direction")
@@ -86,7 +114,9 @@ while x == True:
         if int(direction) == 4:
             print("West is not a vaalid direction")
     player1.location = room_in # needs to be the KEY not "name"
-    print(player1.location)
+    print()
+"""
+#    print(player1.location)
 #
 # If the user enters "q", quit the game.
     # x = False
