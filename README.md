@@ -65,9 +65,7 @@ Add a REPL parser to `adv.py` that accepts directional commands to move the play
 
 ##### Add functionality to the main loop that prints out all the items that are visible to the player when they are in that room.
 
-* Add capability to add `Item`s to the player's inventory. The inventory can
-  also be a `list` of items "in" the player, similar to how `Item`s can be in a
-  `Room`.
+##### Add capability to add `Item`s to the player's inventory. The inventory can also be a `list` of items "in" the player, similar to how `Item`s can be in a   `Room`.
 
 * Add a new type of sentence the parser can understand: two words.
 
@@ -89,13 +87,12 @@ Add a REPL parser to `adv.py` that accepts directional commands to move the play
 * Implement support for the verb `get` followed by an `Item` name. This will be
   used to pick up `Item`s.
 
-  * If the user enters `get` or `take` followed by an `Item` name, look at the
-    contents of the current `Room` to see if the item is there.
+##### If the user enters `get` or `take` followed by an `Item` name, look at the contents of the current `Room` to see if the item is there.
 
-     * If it is there, remove it from the `Room` contents, and add it to the
+##### If it is there, remove it from the `Room` contents, and add it to the
        `Player` contents.
 
-     * If it's not there, print an error message telling the user so.
+##### If it's not there, print an error message telling the user so.
 
      * Add an `on_take` method to `Item`.
 

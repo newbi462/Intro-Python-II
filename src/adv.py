@@ -75,45 +75,62 @@ while play_game == True:
 # * Waits for user input and decides what to do.
     print("Where would you like to go?")
     direction = input("[n] North [s] South [e] East [w] West [i] inventory [q] quit\n *Hint you can take or drop an item\n")
-    if direction == "take":
-        print("would take")
-    if direction == "drop":
-        print("would drop")
+    if direction.split()[0] == "take" or direction.split()[0] == "get":
+        # print("would take")
+        for i in room_in.item_list:
+            if i.item_name == direction.split()[1]:
+                player1.item_list.append(items[direction.split()[1].lower()])
+                room_in.give_error = False
+        room_in.get_item(direction.split()[1])
+        if room_in.give_error == True:
+            print("An item must be here to take it")
+    if direction.split()[0] == "drop":
+        #print("would drop")
+        for i in player1.item_list:
+            if i.item_name == direction.split()[1]:
+                room_in.item_list.append(items[direction.split()[1].lower()])
+                player1.give_error = False
+        player1.get_item(direction.split()[1])
+        if player1.give_error == True:
+            print("You must have an item to drop it")
     else:
 #Valid commands are n, s, e and w which move the player North, South, East or West
     # print(direction)
-        if direction == "i" or direction == "inventory" or direction == "n" or direction == "s" or direction == "e" or direction == "w" or direction == "q":
-            if direction == "n":
-                if player1.location.n_to == "none":
-                    print("pick a valid direction")
-                else:
-                    room_in = player1.location.n_to
-            if direction == "s":
-                if player1.location.s_to == "none":
-                    print("pick a valid direction")
-                else:
-                    room_in = player1.location.s_to
-            if direction == "e":
-                if player1.location.e_to == "none":
-                    print("pick a valid direction")
-                else:
-                    room_in = player1.location.e_to
-            if direction == "w":
-                if player1.location.w_to == "none":
-                    print("pick a valid direction")
-                else:
-                    room_in = player1.location.w_to
-            if direction == "i" or direction == "inventory":
-                print("In your inventory you have:")
-                for i in player1.item_list:
-                    print(f"your {i.item_name} it {i.description}")
-            if direction == "q":
-                play_game = False
+    #    if direction == "i" or direction == "inventory" or direction == "n" or direction == "s" or direction == "e" or direction == "w" or direction == "q":
+        if direction == "n":
+            if player1.location.n_to == "none":
+                print("pick a valid direction")
+            else:
+                room_in = player1.location.n_to
+        if direction == "s":
+            if player1.location.s_to == "none":
+                print("pick a valid direction")
+            else:
+                room_in = player1.location.s_to
+        if direction == "e":
+            if player1.location.e_to == "none":
+                print("pick a valid direction")
+            else:
+                room_in = player1.location.e_to
+        if direction == "w":
+            if player1.location.w_to == "none":
+                print("pick a valid direction")
+            else:
+                room_in = player1.location.w_to
+        if direction == "i" or direction == "inventory":
+            print("In your inventory you have:")
+            for i in player1.item_list:
+                print(f"your {i.item_name} it {i.description}")
+        if direction == "q":
+            play_game = False
         else:
-            print("Per MVP only n, s, e and w are valid commands, NO OTHER SOLUTIONS ARE VALID")
+            print("Valid directions n, s, e and w")
 
     player1.location = room_in
     print()
+
+    player1.give_error = True
+    room_in.give_error = True
 
 
 #

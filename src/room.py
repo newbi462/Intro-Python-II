@@ -18,4 +18,9 @@ class Room:
         if item_list == None:
             self.item_list = []
         else:
-            self.item_list = item_list 
+            self.item_list = item_list
+        self.give_error = True
+    def get_item(self, item):
+        for i in self.item_list:
+            if i.item_name == item:
+                self.item_list.remove(i)
