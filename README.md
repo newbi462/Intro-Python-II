@@ -112,7 +112,7 @@ Add a REPL parser to `adv.py` that accepts directional commands to move the play
 * Implement support for the verb `drop` followed by an `Item` name. This is the
   opposite of `get`/`take`.
 
-* Add the `i` and `inventory` commands that both show a list of items currently
+##### Add the `i` and `inventory` commands that both show a list of items currently
   carried by the player.
 
 

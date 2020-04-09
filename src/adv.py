@@ -74,7 +74,7 @@ while play_game == True:
     # print(room_in.w_to)
 # * Waits for user input and decides what to do.
     print("Where would you like to go?")
-    direction = input("[n] North [s] South [e] East [w] West [q] quit\n *Hint you can take or drop an item\n")
+    direction = input("[n] North [s] South [e] East [w] West [i] inventory [q] quit\n *Hint you can take or drop an item\n")
     if direction == "take":
         print("would take")
     if direction == "drop":
@@ -82,7 +82,7 @@ while play_game == True:
     else:
 #Valid commands are n, s, e and w which move the player North, South, East or West
     # print(direction)
-        if direction == "n" or direction == "s" or direction == "e" or direction == "w" or direction == "q":
+        if direction == "i" or direction == "inventory" or direction == "n" or direction == "s" or direction == "e" or direction == "w" or direction == "q":
             if direction == "n":
                 if player1.location.n_to == "none":
                     print("pick a valid direction")
@@ -103,6 +103,10 @@ while play_game == True:
                     print("pick a valid direction")
                 else:
                     room_in = player1.location.w_to
+            if direction == "i" or direction == "inventory":
+                print("In your inventory you have:")
+                for i in player1.item_list:
+                    print(f"your {i.item_name} it {i.description}")
             if direction == "q":
                 play_game = False
         else:
