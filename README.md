@@ -67,7 +67,7 @@ Add a REPL parser to `adv.py` that accepts directional commands to move the play
 
 ##### Add capability to add `Item`s to the player's inventory. The inventory can also be a `list` of items "in" the player, similar to how `Item`s can be in a   `Room`.
 
-* Add a new type of sentence the parser can understand: two words.
+##### Add a new type of sentence the parser can understand: two words.
 
   * Until now, the parser could just understand one sentence form:
 
@@ -94,18 +94,17 @@ Add a REPL parser to `adv.py` that accepts directional commands to move the play
 
 ##### If it's not there, print an error message telling the user so.
 
-     * Add an `on_take` method to `Item`.
+     * Add an `on_take` method to `Item`. **exception to use different name granted***
 
-        * Call this method when the `Item` is picked up by the player.
+        * **Call this method when the `Item` is picked up by the player.**
 
-        * `on_take` should print out "You have picked up [NAME]" when you pick up an item.
+        * **`on_take` should print out "You have picked up [NAME]" when you pick up an item.**
 
         * The `Item` can use this to run additional code when it is picked up.
 
-     * Add an `on_drop` method to `Item`. Implement it similar to `on_take`.
+     * Add an `on_drop` method to `Item`. Implement it similar to `on_take`.**exception to use different name granted***
 
-* Implement support for the verb `drop` followed by an `Item` name. This is the
-  opposite of `get`/`take`.
+##### Implement support for the verb `drop` followed by an `Item` name. This is the opposite of `get`/`take`.
 
 ##### Add the `i` and `inventory` commands that both show a list of items currently
   carried by the player.

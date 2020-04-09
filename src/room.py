@@ -24,3 +24,4 @@ class Room:
         for i in self.item_list:
             if i.item_name == item:
                 self.item_list.remove(i)
+                print(f"You have picked up {item}")
