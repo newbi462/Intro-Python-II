@@ -55,21 +55,34 @@ while play_game == True:
 #    room_in = room.get(player1.location)
     room_in = player1.location
     print(room_in.description)
+    # print(room_in.w_to)
 # * Waits for user input and decides what to do.
     print("Where would you like to go?")
     direction = input("[n] North [s] South [e] East [w] West [q] quit\n")
 
 #Valid commands are n, s, e and w which move the player North, South, East or West
     # print(direction)
-    if direction == "n" or direction == "s" or direction == "e" or direction == "w" direction == "q":
+    if direction == "n" or direction == "s" or direction == "e" or direction == "w" or direction == "q":
         if direction == "n":
-            room_in = player1.location.n_to
+            if player1.location.n_to == "none":
+                print("pick a valid direction")
+            else:
+                room_in = player1.location.n_to
         if direction == "s":
-            room_in = player1.location.s_to
+            if player1.location.s_to == "none":
+                print("pick a valid direction")
+            else:
+                room_in = player1.location.s_to
         if direction == "e":
-            room_in = player1.location.e_to
+            if player1.location.e_to == "none":
+                print("pick a valid direction")
+            else:
+                room_in = player1.location.e_to
         if direction == "w":
-            room_in = player1.location.w_to
+            if player1.location.w_to == "none":
+                print("pick a valid direction")
+            else:
+                room_in = player1.location.w_to
         if direction == "q":
             play_game = False
     else:
