@@ -47,7 +47,9 @@ Add a REPL parser to `adv.py` that accepts directional commands to move the play
     which point to the room in that respective direction.
 
 * Put the Player class in `player.py`.
-  * Players should have a `name` and `current_room` attributes
+  * Players should have a `name` and `current_room` attributes **self.location = location** verified to be valid name use.
+
+
 
 
 * Create a file called `item.py` and add an `Item` class in there.
