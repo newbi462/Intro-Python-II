@@ -8,10 +8,14 @@ class Room:
         self.description = description
 """
 class Room:
-    def __init__(self, name, description):
+    def __init__(self, name, description, item_list=None):
         self.name = name
         self.description = description
         self.n_to = "none" # would be more por to use None python resereved word
         self.s_to = "none"
         self.e_to = "none"
         self.w_to = "none"
+        if item_list == None:
+            self.item_list = []
+        else:
+            self.item_list = item_list 

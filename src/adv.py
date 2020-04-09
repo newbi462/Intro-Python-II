@@ -21,7 +21,6 @@ chamber! Sadly, it has already been completely emptied by
 earlier adventurers. The only exit is to the south."""),
 }
 
-
 # Link rooms together
 
 room['outside'].n_to = room['foyer']
@@ -33,6 +32,17 @@ room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
+from items import Items
+
+# Items
+
+items = {
+    'gold': Items("Gold", "is shiny"),
+    'lamp': Items("Lamp", "has a blue light"),
+}
+
+room['outside'].item_list.append(items['gold'])
+
 #
 # Main
 #
@@ -41,6 +51,8 @@ room['treasure'].s_to = room['narrow']
 # Make a new player object that is currently in the 'outside' room.
 from player import Player
 player1 = Player("player1", room['outside'])
+# Player inventory
+player1.item_list.append(items['lamp'])
 
 # print(room['outside'].n_to[0])
 # print(player1.location)
@@ -55,38 +67,46 @@ while play_game == True:
 #    room_in = room.get(player1.location)
     room_in = player1.location
     print(room_in.description)
+    for i in room_in.item_list:
+        print(f"you see {i.item_name}")
+    for i in player1.item_list:
+        print(f"your {i.item_name} {i.description}")
     # print(room_in.w_to)
 # * Waits for user input and decides what to do.
     print("Where would you like to go?")
-    direction = input("[n] North [s] South [e] East [w] West [q] quit\n")
-
+    direction = input("[n] North [s] South [e] East [w] West [q] quit\n *Hint you can take or drop an item\n")
+    if direction == "take":
+        print("would take")
+    if direction == "drop":
+        print("would drop")
+    else:
 #Valid commands are n, s, e and w which move the player North, South, East or West
     # print(direction)
-    if direction == "n" or direction == "s" or direction == "e" or direction == "w" or direction == "q":
-        if direction == "n":
-            if player1.location.n_to == "none":
-                print("pick a valid direction")
-            else:
-                room_in = player1.location.n_to
-        if direction == "s":
-            if player1.location.s_to == "none":
-                print("pick a valid direction")
-            else:
-                room_in = player1.location.s_to
-        if direction == "e":
-            if player1.location.e_to == "none":
-                print("pick a valid direction")
-            else:
-                room_in = player1.location.e_to
-        if direction == "w":
-            if player1.location.w_to == "none":
-                print("pick a valid direction")
-            else:
-                room_in = player1.location.w_to
-        if direction == "q":
-            play_game = False
-    else:
-        print("Per MVP only n, s, e and w are valid commands, NO OTHER SOLUTIONS ARE VALID")
+        if direction == "n" or direction == "s" or direction == "e" or direction == "w" or direction == "q":
+            if direction == "n":
+                if player1.location.n_to == "none":
+                    print("pick a valid direction")
+                else:
+                    room_in = player1.location.n_to
+            if direction == "s":
+                if player1.location.s_to == "none":
+                    print("pick a valid direction")
+                else:
+                    room_in = player1.location.s_to
+            if direction == "e":
+                if player1.location.e_to == "none":
+                    print("pick a valid direction")
+                else:
+                    room_in = player1.location.e_to
+            if direction == "w":
+                if player1.location.w_to == "none":
+                    print("pick a valid direction")
+                else:
+                    room_in = player1.location.w_to
+            if direction == "q":
+                play_game = False
+        else:
+            print("Per MVP only n, s, e and w are valid commands, NO OTHER SOLUTIONS ARE VALID")
 
     player1.location = room_in
     print()
