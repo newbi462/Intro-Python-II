@@ -84,8 +84,7 @@ Add a REPL parser to `adv.py` that accepts directional commands to move the play
   * Split the entered command and see if it has 1 or 2 words in it to determine
     if it's the first or second form.
 
-* Implement support for the verb `get` followed by an `Item` name. This will be
-  used to pick up `Item`s.
+##### Implement support for the verb `get` followed by an `Item` name. This will be used to pick up `Item`s.
 
 ##### If the user enters `get` or `take` followed by an `Item` name, look at the contents of the current `Room` to see if the item is there.
 
@@ -106,8 +105,7 @@ Add a REPL parser to `adv.py` that accepts directional commands to move the play
 
 ##### Implement support for the verb `drop` followed by an `Item` name. This is the opposite of `get`/`take`.
 
-##### Add the `i` and `inventory` commands that both show a list of items currently
-  carried by the player.
+##### Add the `i` and `inventory` commands that both show a list of items currently carried by the player.
 
 
 ## Stretch Goals
